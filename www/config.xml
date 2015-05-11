@@ -3,14 +3,14 @@
 <!-- config.xml reference: https://build.phonegap.com/docs/config-xml -->
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "escaner WFC"
+        id        = "Register WFC"
 		versionCode = "1" 
         version   = "1.0.1">
 
-    <name>scaner WFC</name>
+    <name>Register WFC</name>
 
     <description>
-        scaner WFC
+        Register WFC
     </description>
 
     <author href="http://www.marlonruo.com" email="marlon_ru@hotmail.com">
@@ -57,8 +57,7 @@
     <!-- Plugins -->
 
     <!-- Core plugins -->
-	<gap:plugin name="nl.x-services.plugins.calendar" />
-    <gap:plugin name="org.apache.cordova.battery-status" />
+
     <gap:plugin name="org.apache.cordova.camera" />
     <gap:plugin name="org.apache.cordova.media-capture" />
     <gap:plugin name="org.apache.cordova.console" />
