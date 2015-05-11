@@ -60,8 +60,13 @@ function scanear(){
 			
 			
 			
-			var cortar = codigoQR.split('<br>');
-			var nombre=cortar[0]
+			var cortar = codigoQR.split('</b>');
+			var cortar = cortar[0].split('<b>');
+			var nombrec=cortar[1]
+			
+			var cortar4 = nombrec.split(' ');
+			var nombre = cortar4[0]
+			var apellido = cortar4[1]
 			
 			var cortar2 = codigoQR.split("<a href='tel:");
 			var cortar2 = cortar2[1].split("'>");
@@ -73,6 +78,7 @@ function scanear(){
 			
 
 			document.getElementById('f_nombre').value = nombre
+			document.getElementById('f_apellido').value = apellido
 			document.getElementById('f_telefono').value = telefono
 			document.getElementById('f_email').value = email
             //Introducimos esa variable en el campo 

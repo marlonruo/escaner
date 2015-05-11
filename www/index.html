@@ -48,10 +48,7 @@
 <div id="screem" style="opacity:0.0; display:none"> <img src="imagenes/fondo.jpg" width="100%" height="100%" alt="fondo" style="position:absolute"/>
   <div class="plecas" style="top:0px;"> <img src="imagenes/plecas.png" style="height:100%; position:absolute"/> </div>
   <div id="pleca_abajo" class="plecas" style="top:100%;"> <img src="imagenes/plecas.png" style="height:100%; position:absolute"/> </div>
-  <img id="logo" src="imagenes/logo.png"/> <img id="cargar" src="imagenes/cargar.png"/>
-  <div id="naranja"></div>
-  <div id="cargando" class="texto_carbon">CARGANDO</div>
-  <div id="nom3" class="texto_carbon" style="opacity:0.1">holas</div>
+  <img id="logo" src="imagenes/logo.png"/> 
 </div>
  
 
@@ -86,10 +83,15 @@
       <input type="submit" id="bt_registro" style="cursor:pointer" value="" tabindex="7">
     </form>
     </div>
-    
+    <div id="bt_user"></div>
     <a onclick="scanear();" href="#registro"><div id="bt_escan"></div></a>
     
+    
   </div>
+  
+  <iframe id="regs" style="position:absolute; width:90%; height:90%; top:4%; left:5%; background-image:url(imagenes/fondo.jpg); border:none; display:none">	
+  </iframe>
+  <div id="cierra" style="background:url(imagenes/tache.png) no-repeat; background-size:30px; width:30px; height:30px; position:absolute; top:5%; right:6%; display:none"></div>
 </div>
 
 <!--///////////EXITO///////////-->
@@ -101,6 +103,14 @@
  </div>
 </div>
 <script>
+
+		$('#bt_user').click(function(){
+			document.getElementById('regs').src = "http://marlonruo.com/wfc2015/phps/traer.php"
+			$('#regs, #cierra').fadeIn()
+		})
+		$('#cierra').click(function(){
+			$('#regs, #cierra').fadeOut()
+		})
 
         $('#forma_registro').submit(function() {
 
@@ -142,10 +152,10 @@
 					$('#registro').fadeOut(400)
 					ini_exi()
 
-					setTimeout("window.location.href = '#registro'", 2000)
-					setTimeout("$('#registro').fadeIn(400)", 2000)
-					setTimeout("$('#exito').fadeOut(400)", 2000)
-					setTimeout("ini_reg()", 2000)
+					setTimeout("window.location.href = '#registro'", 1500)
+					setTimeout("$('#registro').fadeIn(400)", 1500)
+					setTimeout("$('#exito').fadeOut(400)", 1500)
+					setTimeout("ini_reg()", 1500)
 					//$('#respuesta').html(data);
 					//var id_us = document.getElementById("respuesta").innerHTML
             }
@@ -244,35 +254,7 @@
 
 
 
-<!--------------------QR SCAN------------------>
 
-<div id="scan" style="opacity:0.0; display:none">
-  <div class="sponsor"></div>
-  <div style="width:100%; height:93%; position:absolute; top:7%">
-    <div class="contenido">
-      <div class="titulo_horarios2">
-        <div class="texto_carbon titulo_horarios2f">QR CODES</div>
-        <div class="texto_neo fecha_horarios2f">Scan codes</div>
-        <img class="atr_qr" src="imagenes/atras.png" height="30%" style="position:absolute; left:30%; top:35%"/> </div>
-      <div class="myqr">  </div>
-      <span id="resultado" style="position:absolute; left:30%; top:40%; font-size:1.3rem; text-align:left; color: #014c64;" class="texto_neo"><b>Marlon Ruiz</b><br>Phone: <a href="tel:58229774">58229774</a><br>Email: <a href="mailto:marlon_ru@hotmail.com">marlon_ru@hotmail.com</a></span>
-      <a onclick="scanear();" href="#scan"><span style="position:absolute; left:30%; top:61%; font-size:2rem; text-align:left; color: #014c64;" class="texto_carbon">Scan Code</span></a>
-      </div>
-    <div class="menu" style="max-width:140px;">
-      <div class="seleccionado" style="top:60%"></div>
-      <div id="botones_menu1" class="botones_menu bt_menu1"></div>
-      <div id="botones_menu2" class="botones_menu bt_menu2"></div>
-      <div id="botones_menu3" class="botones_menu bt_menu3"></div>
-      <div id="botones_menu4" class="botones_menu bt_menu4"></div>
-      <div id="botones_menu5" class="botones_menu bt_menu5"></div>
-      <div style="position:relative; float:left; width:80%; left:10%; height:4px; background-color:#FFFFFF"></div>
-      <div id="botones_menu6" class="botones_menu bt_menu6"></div>
-      <div id="botones_menu7" class="botones_menu bt_menu7"></div>
-      <div style="position:relative; float:left; width:80%; left:10%; height:4px; background-color:#FFFFFF"></div>
-      <div id="botones_menu8" class="botones_menu bt_menu8"></div>
-    </div>
-  </div>
-</div>
 
 
 
@@ -324,12 +306,6 @@
 				$('#exito').fadeIn(400)
 				$('#scan').fadeOut(400)
 				ini_exi()
-			}else if(pagina=="#scan"){
-				$('#screem').fadeOut(400)
-				$('#registro').fadeOut(400)
-				$('#exito').fadeOut(400)
-				$('#scan').fadeIn(400)
-				ini_sca()
 			}
 		};
 
@@ -346,24 +322,24 @@
 				$('#screem').stop().animate({opacity: '1'}, 800);
 				ancho_logo = $( "#logo" ).width()
 				ancho_logo2 = ancho_logo/2
-				$('#cargar').css('width',ancho_logo+'px')
 				$('#logo, #cargar').css('margin-left', -ancho_logo2+'px')
-				$('#naranja').css('width', '0px')
-				$('#naranja').css('margin-left', -(ancho_logo2-15)+'px')
-				$('#naranja').css('margin-top', ($("#cargar").height()/2)-1+'px')
-				$('#naranja').animate({width: (ancho_logo-30)+'px'}, 3000);
 				alto_pleca = $( "#pleca_abajo" ).height()
 				$('#pleca_abajo').css('margin-top', -alto_pleca+'px')
 				alto_cargando = $( "#cargando" ).height()
 				$('#cargando').css('font-size', alto_cargando+'px')
 
 
-				setTimeout("$('#screen').fadeOut()", 3000)
+				setTimeout("$('#screen').fadeOut()", 1500)
 				
 				
-				setTimeout("window.location.href = '#registro'", 3000);
-				setTimeout("$('#registro').fadeIn()", 3000)	
-				setTimeout("ini_reg()", 3000)	
+				setTimeout("window.location.href = '#registro'", 1500);
+				setTimeout("$('#registro').fadeIn()", 1500)	
+				setTimeout("ini_reg()", 1500)
+				
+				setTimeout("document.getElementById('f_nombre').value='First name'", 1500)
+				setTimeout("document.getElementById('f_apellido').value='Last name'", 1500)
+				setTimeout("document.getElementById('f_telefono').value='Phone number'", 1500)
+				setTimeout("document.getElementById('f_email').value='E-mail'", 1500)
 		}
 
 
@@ -382,6 +358,9 @@
 				
 				$('#bt_escan').css('width',$('.campo').width()+'px');
 				$('#bt_escan').css('margin-left', -($("#bt_escan").width()/2)+'px')
+				
+				$('#bt_user').css('width',$('.campo').width()+'px');
+				$('#bt_user').css('margin-left', -($("#bt_user").width()/2)+'px')
 		}
 
 		
@@ -397,12 +376,7 @@
 
 
 
-		function ini_sca(){
-			pollo=1
-				$('#scan').stop().animate({opacity: '1'}, 800);
-				$('.titulo_horarios2f').css('font-size', $(".titulo_horarios2f").height()+'px')
-				$('.fecha_horarios2f').css('font-size', $(".fecha_horarios2f").height()+'px')	
-		}
+		
 
 		
 		$("#cancelar").click(function(){
@@ -422,19 +396,7 @@
 	    });*/
 
 
-		$("#boton_registro").click(function(){
-		  window.location.href = '#registro'
-		  $('#login').fadeOut(400)
-		  $('#registro').fadeIn(400)
-		  ini_reg()
-	    });
 
-		$("#bt_start").click(function(){
-		  window.location.href = '#home'
-		  $('#exito').fadeOut(400)
-		  $('#home').fadeIn(400)
-		  ini_hom()
-	    });
 
 
 		$(function() {
